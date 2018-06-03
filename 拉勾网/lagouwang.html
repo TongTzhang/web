@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="./js/jquery-3.2.0.min.js"></script>
+	<title>Document</title>
+	<style type="text/css">
+		html,body,ul,li,p{
+			margin:0;
+			padding:0;
+		}
+		a{
+			text-decoration: none;
+		}
+		ul{
+			list-style: none;
+		}
+		.clearfix::after{
+			clear: both;
+			content: "";
+			height: 0;
+			display: block;
+		}
+		.top-bar{
+			width: 100%;
+			height: 30px;
+			background-color: #333;
+			position: relative;
+		}
+		.top-bar-tip{
+			float: left;
+			
+		}
+		.top-bar-tip a{
+			font-size: 14px;
+		}
+		.top-bar-tip img{
+			padding: 7px 0 0 31px;
+			position: absolute;
+		}
+		.top-bar-tip .sure{
+			
+			top:3px;
+			left:47px;
+			
+			position: absolute;
+			
+						
+		}
+		.sure a{
+			color: #08d7a2;
+		}
+		.sure a:hover{
+			color:#00b38a;
+		}
+		.top-bar-tip .enter{
+			position: absolute;
+			top:3px;
+			left: 131px;
+		}
+		.enter a{
+			color: #c4c3c3;
+		}
+		.enter a:hover, .register a:hover, .enroll a:hover{
+			color: #fff;
+		}
+		.top-bar-tip span{
+			position: absolute;
+			top:3px;
+			left: 113px;
+			color:#c4c3c3;
+
+
+		}
+		/*.top-bar-tip .enter{
+			color: #c4c3c3;
+			font-size: 14px;
+			padding: 5px 0 0 128px;
+			position: absolute;
+			
+		}*/
+		.top-bar-right{
+			float: right;
+		}
+		.top-bar-right .register{
+			position: absolute;
+			top:3px;
+			right: 86px;
+		}
+		.top-bar-right .enroll{
+			position: absolute;
+			top:3px;
+			right: 32px;
+		}
+		.top-bar-right span{
+			position: absolute;
+			top:3px;
+			right: 71px;
+			color: #c4c3c3;
+		}
+		.top-bar-right a{
+			font-size: 14px;
+			color: #c4c3c3;
+		}
+		.top-middle{
+			height: 54px;
+			border-top: 1px solid #d2d2d2;
+			border-bottom: 1px solid #e5e5e5;
+			background-color: #fafafa;
+		}
+		.top-middle-logo{
+			float: left;
+			padding: 10px 0 0 75px;
+		}
+	    .country{
+			float: left;
+		    height: 44px;
+		    padding-top: 10px;
+		    padding-left: 12px;
+		    font-size: 18px;
+		    line-height: 44px;
+		}
+		.country span{
+			margin-right: 3px;
+		    color: #333;
+		    font-size: 18px;
+		    font-weight: 400;
+		}
+		.country a{
+			color: #999;
+		    font-size: 12px;
+		    /*cursor: pointer;*/
+
+		}
+		.menu{
+			float: left;
+			margin-left: 31px;
+		}
+		.menu ul li{
+			float: left;
+			font-size: 18px;
+		    color: #999;
+		    line-height: 53px;
+		    margin: 0 18px;
+		}
+		.menu a{
+			padding: 0 5px;
+			color:#999;
+
+		}
+		
+		.change{
+			border-bottom: 2px solid #00b38a;
+			/*line-height: 53px;*/
+			
+		}
+		.menu .homepage{
+			color: #333;
+		}
+		.menu li:hover {
+			border-bottom: 2px solid #00b38a;
+			cursor: pointer;
+		}
+		.menu li:hover a{
+			color:#333;
+		}
+		.top-last-content{
+			background: #F2F5F4;
+		    padding: 30px 0 28px;
+		    min-width: 1200px;
+		}
+		.box{
+			/*border: 0 solid #00b38a;*/
+			width: 938px;
+		    height: 46px;
+		    margin: 0 auto;
+		}
+		.box input{
+			width: 762px;
+		    height: 20px;
+		    line-height: 20px;
+		    float: left;
+		    font-size: 16px;
+		    padding: 12px 16px;
+		    margin: 0;
+		    border: 1px solid #E8E8E8;
+		    border-right: 0;
+		}
+		.box .search{
+
+		    width: 142px;
+		    height: 46px;
+		    font-size: 18px;
+		    color: #FFF;
+		    border: 0;
+		    background: #00b38a;
+		    cursor: pointer;
+		}
+		.top-last-bar{
+		    width: 938px;
+		    height: 22px;
+		    /* overflow: hidden; */
+		    margin: 6px auto 0;
+		}
+		.top-last-bar span{
+			float: left;
+			margin-right: 10px;
+		    font-size: 14px;
+		    color: #777;
+		}
+		.top-last-bar ul li{
+			float: left;
+			margin-right: 20px;
+		}
+		.top-last-bar a{
+			color: #00b38a;
+			font-size: 14px;
+		}
+		.top-last-bar li:hover{
+			border-bottom: 1px solid #00b38a;
+		}
+		/*.content{
+			margin: 26px auto 0;
+    		width: 1200px;
+		}*/
+		
+
+		.middle-content-bar{
+			float: left;
+		    position: relative;
+		    width: 321px;
+		    margin:-2px 0 0 -15px;
+		}
+		.middle-content-menu{
+			position: relative;
+			
+		}
+		.job-shop{
+			padding: 18px 0 14px 0;
+		}
+		.job-shop-list h2{
+			display: inline-block;
+		    padding-left: 15px;
+		    margin: 0;
+		    font-size: 18px;
+		    font-weight: 500;
+		}
+		.job-shop-list a{
+			margin: 0 5px 5px 0;
+    		padding: 0 8px;
+    		color: #555;
+    		font-size: 14px;
+		}
+		.job-shop-list span{
+			background-image: url("./images/arrow.png");
+			position: absolute;
+		    right: 6px;
+		    top: 26px;
+		    width: 6px;
+		    height: 11px;
+		    
+		}
+		.adver img{
+			margin: 20px 0 0 54px;
+			width: 838px;
+    		height: 352px;
+		}
+		.middle{
+			margin: 26px auto;
+			width: 1200px;
+		}
+		.job-bar{
+			margin-top: 52px;
+		    margin-bottom: 14px;
+		    
+		    border-bottom: 1px solid #E8E8E8;
+
+		}
+		.job-bar ul li{
+			float: left;
+			padding: 14px 0;
+		    margin-right: 58px;		    		   		    
+		}
+		.job-bar .selected{
+			
+		    
+		   
+		    border-bottom: 2px solid #333;
+		    
+		    
+		}
+		.job-bar a{
+			color: #999;
+		}
+		.job-bar .selected a{
+			color: #333;
+		}
+		.job-bar-tab{
+			width: 1200px;
+
+		}
+		.tab ul, .company-list ul{
+			width: 1216px;
+		}
+		.tab ul li{
+			float: left;
+			width: 351px;
+		    height: 180px;
+		    margin: 30px 16px 0 0;
+		    padding: 20px 18px 0;
+		    border: 1px solid #EAEEED;
+		}
+		.name{
+			float: left;
+			position: relative;
+		}
+		.name a{
+			color: #555;
+		}
+		.name a:hover{
+			color: #00b38a;
+		}
+		.name span{
+			color: #999;
+			font-size: 14px;
+
+		}
+		.name img{
+			margin:2px 0 0 3px; 
+		}
+		.money{
+			float: right;
+			padding-left: 70px;
+		}
+		.money span{
+			font-size: 16px;
+    		color: #fa6041;
+		}
+		.time{
+			height: 30px;
+		    line-height: 30px;
+		    color: #777;
+		    font-size: 14px;
+		}
+		.name-list{
+			margin-top:5px;
+		    height: 30px;
+		    line-height: 30px;
+    
+		}
+		.name-list span{
+			width: 61px;
+		    height: 26px;
+		    padding: 0 5px;
+		    font-size: 12px;
+		    line-height: 26px;
+		    color: #999;
+		    border: 1px solid #F0F0F0;
+		    border-radius: 3px;
+		    text-align: center;
+		    display: inline-block;
+		}
+		.info{
+			margin-top: 108px;
+		    padding-top: 17px;
+		    border-top: 1px dashed #E0E0E0;
+		    width: 351px;
+		    position: absolute;
+		    float: left;
+		}
+		.info img{
+			height: 40px;
+			width: 40px;
+
+			left: -54px;
+			position: absolute;
+		}
+		.info a{
+			color: #555;
+			font-size: 14px;
+			top:17px;
+			left: 55px;
+			position: absolute;
+		}
+		.info p{
+			line-height: 20px;
+    		color: #999;
+    		font-size: 14px;
+    		position: absolute;
+    		top:38px;
+    		left: 55px;
+    		
+
+		}
+		.hide {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        .list-more{
+        	
+		    width: 387px;
+		    height: 42px;
+		    line-height: 42px;
+		    margin: 713px auto 0;
+		    background: #FFF;
+		    border: 1px solid #00B38A;
+		    font-size: 16px;
+		    
+		    text-align: center;
+		}
+		.list-more-c{
+        	
+		    width: 387px;
+		    height: 42px;
+		    line-height: 42px;
+		    margin: 610px auto 0;
+		    background: #FFF;
+		    border: 1px solid #00B38A;
+		    font-size: 16px;
+		    
+		    text-align: center;
+		}        
+		.list-more-c a{
+        	color: #00b38a;
+        }    
+        
+        .list-more a{
+        	color: #00b38a;
+        }
+        .list-more:hover, .list-more-c:hover{
+        	background-color: #00b38a;
+        }
+        .list-more:hover a, .list-more-c:hover a{
+        	color: #fff;
+        }
+        .company{
+			
+			margin-top: 52px;
+		    margin-bottom: 14px;
+		    border-bottom: 1px solid #E8E8E8;
+		    
+		    position: relative;
+        }
+        .hot-company, .friendship{
+        	height: 35px; 
+        	width:65px;
+        	border-bottom: 2px solid #333;
+        }
+        
+        .company-list{
+        	position: absolute;
+
+        }
+        .company-list ul li{
+			float: left;
+		    width: 286px;
+		    height: 270px;
+		    margin-top: 16px;
+		    margin-right: 16px;
+		    border: 1px solid #EEE;
+		}
+        .ad-top{
+        	margin: 0 13px;
+		    padding: 20px 0 14px;
+		    text-align: center;
+		    border-bottom: 1px dashed #E0E0E0;
+        }
+        .ad-top p{
+        	line-height: 22px;
+        }
+        .ad-top img{
+        	width: 80px;
+        	height: 80px;
+        	vertical-align: top;
+        }
+        .ad-top .chongqing{
+        	height: 22px;
+		    margin-top: 13px;
+		    font-size: 16px;
+		    color: #333;
+        }
+        .ad-top .explore{
+        	height: 22px;
+		    margin-top: 3px;
+		    color: #999;
+		    font-size: 14px;
+        }
+        .ad-top .withyou{
+        	margin-top: 5px;
+    		color: #555;
+    		font-size: 14px;
+        }
+        .ad-last-left{
+        	width: 90px;
+        	
+		    margin-top: 17px;
+		    text-align: center;
+		    float: left;
+		    position: relative;
+        }
+		.ad-last-right{
+        	width: 104px;
+        	
+		    margin-top: 17px;
+		    text-align: center;
+		    float: left;
+		    position: relative;
+        }
+        .number{
+        	line-height: 1;
+        	color: #00b38a;
+        	font-size: 14px;
+        }
+        .number-c{
+        	line-height: 1;
+        	color: #00b38a;
+        	font-size: 14px;
+        }
+        .number::after{
+        	position: absolute;
+		    top: 0;
+		    right: 0;
+		    content: "";
+		    height: 30px;
+		    width: 1px;
+		    background: #EDEDED;
+        }
+        .try{
+        	margin-top: 4px;
+		    font-size: 12px;
+		    color: #999;
+		    line-height: 1;
+        }
+        .try-c{
+        	margin-top: 4px;
+		    font-size: 12px;
+		    color: #999;
+		    line-height: 1;
+        }
+        .friendship-bar{
+        	float: left;
+        	width: 1120px;
+        	padding-top: 35px;
+        }
+
+        .friendship-bar a{
+        	float: left;
+		    height: 15px;
+		    padding: 8px 18px 8px 0;
+		    line-height: 15px;
+		    color: #555;
+		    font-size: 14px;
+        }
+        .friendship-bar:hover a{
+        	color: #00b38a;
+        }
+        .foot-one{
+        	width: 100%;
+		    height: 60px;
+		   
+		   
+		    
+		    background: #09C084;
+        }
+        .foot-content{
+        	width: 1200px;
+		    height: 60px;
+		    margin: 0 auto;
+		    position: relative;
+
+        }
+        .foot-content img{
+        	width: 99px;
+        	height: 86px;
+        	position: absolute;
+		    bottom: 0;
+		    left: 0;
+		    float: left;
+        }
+        .line{
+        	margin:52px 0 0 67px;
+        	height: 100px;
+        }
+        .line-c{
+        	border-bottom: 1px solid #E8E8E8;
+        }
+        .foot-content-one{
+        	margin-left: 180px;
+		    color: #fff;
+		    font-size: 0;
+        }
+        .in{
+        	height: 60px;
+		    line-height: 60px;
+		    
+		    font-size: 20px;
+        }
+        .out{
+        	width: 584px;
+
+    		text-align: center;
+    		margin-left: 140px;
+        }
+        .out-one{
+        	display: inline-block;
+		    height: 60px;
+		    line-height: 60px;
+		    vertical-align: top;
+		    font-size: 20px;
+		    position: relative;
+        }
+        .out-two{
+        	margin: 19px 20px 0;
+		    font-size: 18px;
+		    height: 18px;
+		    line-height: 1;
+		    opacity: .4;
+        }
+        .foot-right{
+        	text-align: center;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    width: 197px;
+		    
+		    
+        }
+        .foot-right-one{
+			float: left;
+        	height: 38px;
+		    line-height: 38px;
+		    width: 91px;
+		    border: 1px solid #FFF;
+		    color: #FFF;
+		    text-align: center;
+		    margin-top:11px;
+
+		    border-radius: 3px;
+        }
+        .foot-right-one a{
+        	color: #fff;
+        }
+        .foot-right-one:hover{
+        	background-color: #fff;
+        }
+        .foot-right-one:hover a{
+        	color: #00b38a;
+        }
+        .foot-right-two{
+			margin-left: 110px;
+        	height: 38px;
+		    line-height: 38px;
+		    width: 91px;
+		    border: 1px solid #FFF;
+		    background-color: #FFF;
+		    text-align: center;
+		    margin-top:11px;
+		    border-radius: 3px;
+        }
+        .foot-right-two a{
+        	color: #00b38a;
+        }
+        .foot-two {
+          position: fixed;
+          bottom: 0;
+          z-index: 9999;
+          width: 100%;
+        }
+        .end{
+        	
+        	
+        	height: 100px;
+        }
+        .end-content{
+        	width: 1024px;
+		    position: relative;
+		    margin: 10px auto;
+        }
+        .end-content img{
+        	width: 198px;
+    		height: 19px;
+        }
+	</style>
+</head>
+
+<body>
+	<div class="top">
+		<div class="top-bar">
+			<div class="top-bar-tip">
+				<img src="./images/app.png" alt="">
+				<div class="sure">
+					<a href="#">拉勾APP</a>
+				</div>
+				<span>|</span>
+				<div class="enter">
+					<a href="#">进入企业版</a>
+				</div>
+			</div>
+			<div class="top-bar-right">
+				<div class="register">
+					<a href="#">登录</a>
+				</div>
+				<span>|</span>
+				<div class="enroll">
+					<a href="#">注册</a>
+				</div>
+			</div>
+		</div>
+		<div class="top-middle">
+			<div class="top-middle-logo">
+				<a href="#"><img src="./images/logo.png" alt=""></a>
+			</div>
+			<div class="country">
+				<span>全国站</span>
+				<a href="#">[切换城市]</a>
+			</div>
+			<div class="menu">
+				<ul class="clearfix">
+					<li class="change"><a class="homepage" href="#">首页</a></li>
+					<li><a href="#">公司</a></li>
+					<li><a href="#">校园</a></li>
+					<li><a href="#">言职</a></li>
+					<li><a href="#">大鲲</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="top-last">
+			<div class="top-last-content">
+				<div class="box">
+					<input  type="text" value="搜索职位、公司或地点">
+					<input class="search" type="submit"
+					value="搜索">
+				</div>
+			
+				<div class="top-last-bar">
+					<span>热门搜索 :</span>
+					<ul class="clearfix">
+						<li><a href="#">java</a></li>
+						<li><a href="#">贝米钱包</a></li>
+						<li><a href="#">UI设计师</a></li>
+						<li><a href="#">PHP</a></li>
+						<li><a href="#">销售经理</a></li>
+						<li><a href="#">产品经理</a></li>
+						<li><a href="#">C++</a></li>
+						<li><a href="#">内容运营</a></li>
+						<li><a href="#">拉勾APP</a></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="middle">
+		<div class="middle-content">
+			<div class="middle-content-bar">
+				<div class="middle-content-menu">
+					<div class="job-shop">
+						<div class="job-shop-list">
+							<h2>技术</h2>
+							<a href="#">Java</a>
+							<a href="#">PHP</a>
+							<a href="#">C++</a>
+							<a href="#">Android</a>
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div class="middle-content-menu">
+					<div class="job-shop">
+						<div class="job-shop-list">
+							<h2>产品</h2>
+							<a href="#">产品总监</a>
+							<a href="#">产品经理</a>
+							<!-- <a href="#">C++</a>
+							<a href="#">Android</a> -->
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div class="middle-content-menu">
+					<div class="job-shop">
+						<div class="job-shop-list">
+							<h2>设计</h2>
+							<a href="#">UI设计师</a>
+							<a href="#">交互设计</a>
+							<a href="#">网页设计师</a>
+							<!-- <a href="#">Android</a> -->
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div class="middle-content-menu">
+					<div class="job-shop">
+						<div class="job-shop-list">
+							<h2>运营</h2>
+							<a href="#">新媒体运营</a>
+							<a href="#">编辑</a>
+							<a href="#">数据运营</a>
+							<!-- <a href="#">Android</a> -->
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div class="middle-content-menu">
+					<div class="job-shop">
+						<div class="job-shop-list">
+							<h2>市场与销售</h2>
+							<a href="#">市场推广</a>
+							<a href="#">市场总监</a>
+							<!-- <a href="#">C++</a> -->
+							<!-- <a href="#">Android</a> -->
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div class="middle-content-menu">
+					<div class="job-shop">
+						<div class="job-shop-list">
+							<h2>职能</h2>
+							<a href="#">HR</a>
+							<a href="#">行政</a>
+							<a href="#">财务</a>
+							<a href="#">审计</a>
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div class="middle-content-menu">
+					<div class="job-shop">
+						<div class="job-shop-list">
+							<h2>金融</h2>
+							<a href="#">投资</a>
+							<a href="#">融资</a>
+							<a href="#">并购</a>
+							<a href="#">风控</a>
+							<span></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="adver">
+			<a href="#"><img src="./images/green.JPG" alt=""></a>
+		</div>
+		<div class="job-bar">
+			<ul class="clearfix">
+				<li class="selected"><a href="#">热门职位</a></li>
+				<li><a href="#">最新职位</a></li>
+			</ul>
+		<div class="job-bar-tab">
+			<div class="tab">
+				<ul>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">大数据平台开发</a>
+								<span>[2017-10-16]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>7k-14k</span>
+								</div>
+								<div class="time">
+									<p>经验1-3年 / 本科</p>
+								</div>
+								<div class="name-list">
+									<span>架构师</span>
+									<span>hadoop</span>
+									<span>数据分析</span>
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">大数据平台开发</a>
+								<span>[2017-10-16]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>7k-14k</span>
+								</div>
+								<div class="time">
+									<p>经验1-3年 / 本科</p>
+								</div>
+								<div class="name-list">
+									<span>架构师</span>
+									<span>hadoop</span>
+									<span>数据分析</span>
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">大数据平台开发</a>
+								<span>[2017-10-16]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>7k-14k</span>
+								</div>
+								<div class="time">
+									<p>经验1-3年 / 本科</p>
+								</div>
+								<div class="name-list">
+									<span>架构师</span>
+									<span>hadoop</span>
+									<span>数据分析</span>
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">大数据平台开发</a>
+								<span>[2017-10-16]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>7k-14k</span>
+								</div>
+								<div class="time">
+									<p>经验1-3年 / 本科</p>
+								</div>
+								<div class="name-list">
+									<span>架构师</span>
+									<span>hadoop</span>
+									<span>数据分析</span>
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">大数据平台开发</a>
+								<span>[2017-10-16]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>7k-14k</span>
+								</div>
+								<div class="time">
+									<p>经验1-3年 / 本科</p>
+								</div>
+								<div class="name-list">
+									<span>架构师</span>
+									<span>hadoop</span>
+									<span>数据分析</span>
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">大数据平台开发</a>
+								<span>[2017-10-16]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>7k-14k</span>
+								</div>
+								<div class="time">
+									<p>经验1-3年 / 本科</p>
+								</div>
+								<div class="name-list">
+									<span>架构师</span>
+									<span>hadoop</span>
+									<span>数据分析</span>
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">大数据平台开发</a>
+								<span>[2017-10-16]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>7k-14k</span>
+								</div>
+								<div class="time">
+									<p>经验1-3年 / 本科</p>
+								</div>
+								<div class="name-list">
+									<span>架构师</span>
+									<span>hadoop</span>
+									<span>数据分析</span>
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">大数据平台开发</a>
+								<span>[2017-10-16]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>7k-14k</span>
+								</div>
+								<div class="time">
+									<p>经验1-3年 / 本科</p>
+								</div>
+								<div class="name-list">
+									<span>架构师</span>
+									<span>hadoop</span>
+									<span>数据分析</span>
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">大数据平台开发</a>
+								<span>[2017-10-16]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>7k-14k</span>
+								</div>
+								<div class="time">
+									<p>经验1-3年 / 本科</p>
+								</div>
+								<div class="name-list">
+									<span>架构师</span>
+									<span>hadoop</span>
+									<span>数据分析</span>
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+			
+			</div>
+			
+			<div class="tab hide">
+				<ul>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">Web前端工程师</a>
+								<span>[10:32发布]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>10k-15k</span>
+								</div>
+								<div class="time">
+									<p>经验3-5年 / 不限</p>
+								</div>
+								<div class="name-list">
+									<span>HTML</span>
+									<span>JavaScript</span>
+									<!-- <span>数据分析</span> -->
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">Web前端工程师</a>
+								<span>[10:32发布]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>10k-15k</span>
+								</div>
+								<div class="time">
+									<p>经验3-5年 / 不限</p>
+								</div>
+								<div class="name-list">
+									<span>HTML</span>
+									<span>JavaScript</span>
+									<!-- <span>数据分析</span> -->
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">Web前端工程师</a>
+								<span>[10:32发布]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>10k-15k</span>
+								</div>
+								<div class="time">
+									<p>经验3-5年 / 不限</p>
+								</div>
+								<div class="name-list">
+									<span>HTML</span>
+									<span>JavaScript</span>
+									<!-- <span>数据分析</span> -->
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">Web前端工程师</a>
+								<span>[10:32发布]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>10k-15k</span>
+								</div>
+								<div class="time">
+									<p>经验3-5年 / 不限</p>
+								</div>
+								<div class="name-list">
+									<span>HTML</span>
+									<span>JavaScript</span>
+									<!-- <span>数据分析</span> -->
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">Web前端工程师</a>
+								<span>[10:32发布]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>10k-15k</span>
+								</div>
+								<div class="time">
+									<p>经验3-5年 / 不限</p>
+								</div>
+								<div class="name-list">
+									<span>HTML</span>
+									<span>JavaScript</span>
+									<!-- <span>数据分析</span> -->
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">Web前端工程师</a>
+								<span>[10:32发布]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>10k-15k</span>
+								</div>
+								<div class="time">
+									<p>经验3-5年 / 不限</p>
+								</div>
+								<div class="name-list">
+									<span>HTML</span>
+									<span>JavaScript</span>
+									<!-- <span>数据分析</span> -->
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">Web前端工程师</a>
+								<span>[10:32发布]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>10k-15k</span>
+								</div>
+								<div class="time">
+									<p>经验3-5年 / 不限</p>
+								</div>
+								<div class="name-list">
+									<span>HTML</span>
+									<span>JavaScript</span>
+									<!-- <span>数据分析</span> -->
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">Web前端工程师</a>
+								<span>[10:32发布]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>10k-15k</span>
+								</div>
+								<div class="time">
+									<p>经验3-5年 / 不限</p>
+								</div>
+								<div class="name-list">
+									<span>HTML</span>
+									<span>JavaScript</span>
+									<!-- <span>数据分析</span> -->
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="ad-one">
+							<div class="name">
+								<a href="#">Web前端工程师</a>
+								<span>[10:32发布]</span>
+								<img src="./images/chat.png" alt="">
+
+								<div class="money">
+									<span>10k-15k</span>
+								</div>
+								<div class="time">
+									<p>经验3-5年 / 不限</p>
+								</div>
+								<div class="name-list">
+									<span>HTML</span>
+									<span>JavaScript</span>
+									<!-- <span>数据分析</span> -->
+								</div>
+							</div>
+							<div class="info">
+								<a href="#"><img src="./images/mobile.png" alt=""></a>
+								<a href="#">重庆移动</a>
+								<p>移动互联网 / 不需要融资 / 重庆</p>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+
+			</div>
+			
+		</div>
+
+	</div>
+	
+	<div class="list-more"><a href="#">查看更多</a></div>
+	<div class="bottom">
+		<div class="company">
+			<div class="hot-company">热门公司</div>
+			
+		</div>
+		<div class="company-list">
+			<ul class="clearfix">
+				<li class="ad-two">
+					<div class="ad-top">
+						<p><a href="#"><img src="./images/mobile.png" alt=""></a></p>
+						<p class="chongqing"><a href="#">重庆移动</a></p>
+						<p class="explore"><span>移动互联网 / 不需要融资</span></p>
+						<p class="withyou">“和”你一起，连接未来</p>
+					</div>
+					<div class="ad-last">
+						<a class="ad-last-left" href="#">
+							<p class="number">1</p>
+							<p class="try">面试评价</p>
+
+						</a>
+						<a class="ad-last-left" href="#">
+							<p class="number">49</p>
+							<p class="try">在招职位</p>
+
+						</a>
+						<a class="ad-last-right" href="#">
+							<p class="number-c">0%</p>
+							<p class="try-c">简历处理率</p>
+
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="ad-top">
+						<p><a href="#"><img src="./images/mobile.png" alt=""></a></p>
+						<p class="chongqing"><a href="#">重庆移动</a></p>
+						<p class="explore"><span>移动互联网 / 不需要融资</span></p>
+						<p class="withyou">“和”你一起，连接未来</p>
+					</div>
+					<div class="ad-last">
+						<a class="ad-last-left" href="#">
+							<p class="number">1</p>
+							<p class="try">面试评价</p>
+
+						</a>
+						<a class="ad-last-left" href="#">
+							<p class="number">49</p>
+							<p class="try">在招职位</p>
+
+						</a>
+						<a class="ad-last-right" href="#">
+							<p class="number-c">0%</p>
+							<p class="try-c">简历处理率</p>
+
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="ad-top">
+						<p><a href="#"><img src="./images/mobile.png" alt=""></a></p>
+						<p class="chongqing"><a href="#">重庆移动</a></p>
+						<p class="explore"><span>移动互联网 / 不需要融资</span></p>
+						<p class="withyou">“和”你一起，连接未来</p>
+					</div>
+					<div class="ad-last">
+						<a class="ad-last-left" href="#">
+							<p class="number">1</p>
+							<p class="try">面试评价</p>
+
+						</a>
+						<a class="ad-last-left" href="#">
+							<p class="number">49</p>
+							<p class="try">在招职位</p>
+
+						</a>
+						<a class="ad-last-right" href="#">
+							<p class="number-c">0%</p>
+							<p class="try-c">简历处理率</p>
+
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="ad-top">
+						<p><a href="#"><img src="./images/mobile.png" alt=""></a></p>
+						<p class="chongqing"><a href="#">重庆移动</a></p>
+						<p class="explore"><span>移动互联网 / 不需要融资</span></p>
+						<p class="withyou">“和”你一起，连接未来</p>
+					</div>
+					<div class="ad-last">
+						<a class="ad-last-left" href="#">
+							<p class="number">1</p>
+							<p class="try">面试评价</p>
+
+						</a>
+						<a class="ad-last-left" href="#">
+							<p class="number">49</p>
+							<p class="try">在招职位</p>
+
+						</a>
+						<a class="ad-last-right" href="#">
+							<p class="number-c">0%</p>
+							<p class="try-c">简历处理率</p>
+
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="ad-top">
+						<p><a href="#"><img src="./images/mobile.png" alt=""></a></p>
+						<p class="chongqing"><a href="#">重庆移动</a></p>
+						<p class="explore"><span>移动互联网 / 不需要融资</span></p>
+						<p class="withyou">“和”你一起，连接未来</p>
+					</div>
+					<div class="ad-last">
+						<a class="ad-last-left" href="#">
+							<p class="number">1</p>
+							<p class="try">面试评价</p>
+
+						</a>
+						<a class="ad-last-left" href="#">
+							<p class="number">49</p>
+							<p class="try">在招职位</p>
+
+						</a>
+						<a class="ad-last-right" href="#">
+							<p class="number-c">0%</p>
+							<p class="try-c">简历处理率</p>
+
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="ad-top">
+						<p><a href="#"><img src="./images/mobile.png" alt=""></a></p>
+						<p class="chongqing"><a href="#">重庆移动</a></p>
+						<p class="explore"><span>移动互联网 / 不需要融资</span></p>
+						<p class="withyou">“和”你一起，连接未来</p>
+					</div>
+					<div class="ad-last">
+						<a class="ad-last-left" href="#">
+							<p class="number">1</p>
+							<p class="try">面试评价</p>
+
+						</a>
+						<a class="ad-last-left" href="#">
+							<p class="number">49</p>
+							<p class="try">在招职位</p>
+
+						</a>
+						<a class="ad-last-right" href="#">
+							<p class="number-c">0%</p>
+							<p class="try-c">简历处理率</p>
+
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="ad-top">
+						<p><a href="#"><img src="./images/mobile.png" alt=""></a></p>
+						<p class="chongqing"><a href="#">重庆移动</a></p>
+						<p class="explore"><span>移动互联网 / 不需要融资</span></p>
+						<p class="withyou">“和”你一起，连接未来</p>
+					</div>
+					<div class="ad-last">
+						<a class="ad-last-left" href="#">
+							<p class="number">1</p>
+							<p class="try">面试评价</p>
+
+						</a>
+						<a class="ad-last-left" href="#">
+							<p class="number">49</p>
+							<p class="try">在招职位</p>
+
+						</a>
+						<a class="ad-last-right" href="#">
+							<p class="number-c">0%</p>
+							<p class="try-c">简历处理率</p>
+
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="ad-top">
+						<p><a href="#"><img src="./images/mobile.png" alt=""></a></p>
+						<p class="chongqing"><a href="#">重庆移动</a></p>
+						<p class="explore"><span>移动互联网 / 不需要融资</span></p>
+						<p class="withyou">“和”你一起，连接未来</p>
+					</div>
+					<div class="ad-last">
+						<a class="ad-last-left" href="#">
+							<p class="number">1</p>
+							<p class="try">面试评价</p>
+
+						</a>
+						<a class="ad-last-left" href="#">
+							<p class="number">49</p>
+							<p class="try">在招职位</p>
+
+						</a>
+						<a class="ad-last-right" href="#">
+							<p class="number-c">0%</p>
+							<p class="try-c">简历处理率</p>
+
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+
+	</div>
+
+	<div class="list-more-c"><a href="#">查看更多</a></div>
+	</div>
+	<div class="line">
+		<div class="line-c">
+			<div class="friendship">友情链接
+				<div class="friendship-bar">
+					<a href="#">拉勾网</a>
+					<a href="#">大鲲</a>
+					<a href="#">招聘</a>
+					<a href="#">app下载</a>
+					<a href="#">拉勾云</a>
+					<a href="#">中大网校</a>
+					<a href="#">人人都是产品经理</a>
+					<a href="#">教师招聘</a>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="foot">
+		<div class="foot-one foot-two">
+			<div class="foot-content">
+				<img src="./images/office.png" alt="">
+				<p class="foot-content-one">
+					<span class="in">在拉勾，发现新的职业机会
+					</span>
+					<span class="out">
+						<span class="out-one">265682公司</span>
+						<span class="out-two">|</span>
+						<span class="out-one">3672208职位</span>
+					</span>
+				</p>
+				<div class="foot-right">
+					<div class="foot-right-one">
+						<a href="#">登录</a>
+					</div>
+					<div class="foot-right-two">
+						<a href="#">注册</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="end">
+		<div class="end-content">
+			<img src="./images/icon.png" alt="">
+		</div>
+	</div>
+	<script>
+		$(function(){
+            $(".job-bar .clearfix li").click(function(){
+                $(this).addClass("selected").siblings().removeClass("selected");
+                var index = $(this).index();
+                $(".tab").eq(index).show().siblings().hide();
+            })
+            $(window).scroll(function(){
+        		var EndHeight = $(".end").height();
+        		var bodyHeight = $("body").height();
+        		var windowHeight = $(window).height();
+        		var scrollHeight = $(window).scrollTop();
+        		if((scrollHeight + windowHeight) >= (bodyHeight - EndHeight)) {
+          	$(".foot-one").removeClass("foot-two")
+        	}else {
+         	 $(".foot-one").addClass("foot-two")
+        		}
+     	 	})
+        })
+	</script>
+</body>
+</html>
