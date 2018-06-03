@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Document</title>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<style type="text/css">
+		html,body,img,ul,li,a,hr{
+			margin: 0;
+			padding: 0;
+		}
+		a {
+            text-decoration: none;
+        }
+		.top{
+			height: 82px;
+			width: 1349px;
+			background:#ffd52b;
+		}
+		.top img{
+			float:left;
+			padding-left: 195px;
+		}
+		.bar clearfix, .menu clearfix::after{
+        	display:block;
+        	content:"";
+        	clear:both;
+        	height:0;
+        }
+        .bar li{        	            
+        	float:left;
+        	font-family: "Microsoft YaHei",Arial,"Hiragino Sans GB";
+        	font-size: 17px;     	      	
+        	padding:30px 17px; 			
+        	list-style: none;
+        }
+        .bar li:hover{
+        	
+        	background-color: #ffe36f;        	
+        }
+        .bar a, .userbar a{
+        	color:#7a4624;
+        }
+        .userbar{
+        	font-family: "Microsoft YaHei",Arial,"Hiragino Sans GB";
+        	font-size: 18px;     	      	       	
+			text-align: center;        	
+        	padding-top:29px;
+        }       
+        .content{       	
+        	width:1349px;        	
+        	background-color: #f7f7f7;
+        }
+        .left, .middle{
+        	float:left;
+        	width:640px;
+        	margin:16px 0 0 198px;
+        	border:1px solid  #fff;
+        	background-color: #fff;
+        }
+        .left img, .middle img{
+        	padding: 8px 0 0 10px;
+        }
+        .left p, .middle p{
+        	padding:0 10px 0 25px;
+        }
+        .right{
+        	width: 300px;
+        	margin:0 0 0 840px;
+        }
+        .right img{
+        	margin:16px 0 0 18px;
+        }
+        .shopwindow{
+        	width:300px;
+        	height:610px;
+        	border:1px solid  #fff;
+        	background-color: #fff;
+        	margin:10px 20px;
+        }
+        .shopwindow h3{
+        	margin:10px 14px;
+        	font-size: 16px;
+        	color:#6a3906;
+        }
+        .shopwindow hr{
+        	color:#6a3906;
+        	margin-top:12px;
+        }
+        .shopwindow img{
+        	margin:-6px 7px;
+        }
+      	.sidebar{
+      		width:300px;
+        	height:310px;
+        	border:1px solid  #fff;
+        	background-color: #fff;
+        	margin:10px 20px;
+      	}
+      	.mune li{
+      		float:left;
+        	font-family: "Microsoft YaHei",Arial,"Hiragino Sans GB";
+        	font-size: 17px;
+        	padding:13px 16px; 
+        	list-style: none;
+        	border-bottom:2px solid #f7f7f7;
+        }
+        .mune li:hover{
+        	border-bottom:2px solid #6a3906;
+        }
+        .mune a{
+        	color:#6a3906;
+        }
+        .hot li{
+        	float: left;
+        	list-style: none;
+        	padding:5px 10px;
+        }
+        .hot a{
+        	font-size: 14px;
+        	color:#6a5c4e;
+        }
+		.bottom{
+			padding:10px 194px;
+		}
+        .click li{
+        	float: left;
+        	list-style: none;	
+        	padding:5px 10px;
+        	border:3px solid #f7f7f7;
+        	background-color: #fff
+        }
+        .footer{	
+        	height:294px;
+        	margin-top: 25px;
+        	border-bottom:1px solid #f7f7f7;
+        }
+        .footer img{
+			margin:10px 262px;
+        }
+        .about{
+        	margin:1px 0 0 238px;
+        }
+        .help{
+        	margin:-140px 0 0 420px;
+        }
+        .download{
+        	margin:-138px 0 0 593px;
+        }
+        .care{
+        	margin:-113px 0 0 813px;
+        }
+        .orgnize{
+        	margin:-138px 0 0 987px;
+        }
+        .about li, .help li, .download li, .care li, .orgnize li{	
+        	list-style: none;
+        	padding-top:5px ;
+        }
+        .footer h3{
+        	font-size: 18px;
+        	font-weight: 400;
+        }
+        .footer a{
+        	color:#666;
+        	font-size: 14px;
+        }
+        .end{
+        	height:200px;
+        	margin:18px 10px;
+        }
+        .end p{
+        	font-size: 10px;
+        	text-align: center;
+        }
+        .change{
+            border-bottom:3px solid #7a4624; 
+            background-color: #ffe36f ;
+            height: 19px;        
+        }
+        .changed{
+            width: 100%;
+            height: 100%;
+            position:fixed;
+            top:0;
+            background:rgba(0,0,0,0.3);
+            display: none;
+        }
+        .show, .hide{
+            position: relative;
+            z-index: 2;
+        }
+        
+	</style>
+</head>
+<body>
+	<div class="top">
+		<img src="./image/fi.png" alt="">
+		<ul class="bar clearfix">
+			<li class="change"><a href="#">热门</a></li>
+			<li><a href="#">24小时</a></li>
+			<li><a href="#">热图</a></li>
+			<li><a href="#">文字</a></li>
+			<li><a href="#">穿越</a></li>
+			<li><a href="#">糗图</a></li>
+			<li><a href="#">新鲜</a></li>
+			<li><a href="#">投稿</a></li>
+		</ul>
+		<div class="userbar"><a href="#">登录</a></div>
+            <button class="show">show</button>
+            <button class="hide">hide</button>
+            
+	</div>
+	<div class="content">
+		<div class="left">
+			<img src="./image/se.png" alt="">
+			<p>一哥们因为感情受挫，爬到天台顶，准备跳楼。</p>
+        	<p>楼下一小伙自告奋勇，准备劝说那位哥们，便说道："我是一名说唱歌手，我将用说唱的方式来劝说。"于是便摇头晃脑的开始说道："生活总是那么的不易，可是你我总要勇敢面对，以后的生活还要继续，现在的你需要听我说，我说不要，你说跳，来，不要……"</p>
+	        <p>旁边围观群众喊道："跳!"</p>
+	        <p>"不要……"</p>
+	        <p>"跳!"</p>
+	        <p>"不要，不要，不要……"</p>
+	        <p>"跳、跳、跳……"</p>
+	        <p>只听咚的一声，那男子就跳了下来。</p>
+	        <img src="./image/th.png" alt="">
+		</div>
+		<div class="middle">
+			<img src="./image/fo.png" alt="">
+			<p>我开始减肥，然后越来越肥</p>
+			<img src="./image/fif.png" alt="">
+			<img src="./image/si.png" alt="">
+           		
+		</div>
+        
+            
+		<div class="right">
+			<img src="./image/sev.png" alt="">
+			<img src="./image/ei.png" alt="">
+			<img src="./image/ni.png" alt="">
+			<div class="shopwindow">
+				<h3>爆笑糗事精选<hr/></h3>
+				<img src="./image/te.png" alt="">
+			</div>
+			<div class="sidebar">
+				<ul class="mune clearfix">
+					<li><a href="#">热门</a></li>
+					<li><a href="#">话题</a></li>
+					<li><a href="#">专区</a></li>
+					<li><a href="#">推荐</a></li>		
+				</ul>
+				<ul class="hot clearfix">
+					<li><a href="#">#关于数学年货手抄报#</a></li>
+					<li><a href="#">#已知关于x的方程x的平方减4x#</li>
+					<li><a href="#">#已知关于x的方程#</a></li>
+					<li><a href="#">#关于动物的四字成语#</a></li>
+					<li><a href="#">#关于水环保的手抄报内容#</a></li>
+					<li><a href="#">#新出的关于狗狗的电影#</a></li>
+					<li><a href="#">#关于船和水的诗句#</a></li>
+					<li><a href="#">#关于狗狗的电影喜剧#</a></li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="bottom">
+			<ul class="click clearfix">
+				<li>1</li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>			
+				<li><a href="#">...</a></li>
+				<li><a href="#">13</a></li>
+				<li><a href="#">下一页</a></li>
+			</ul>		
+		</div>
+	</div>
+	<div class="footer">
+		<img src="./image/thi.png" alt="">
+		<ul class="about">
+			<h3>关于</h3>
+			<li><a href="#">关于糗百</a></li>
+			<li><a href="#">加入我们</a></li>
+			<li><a href="#">联系方式</a></li>
+		</ul>
+		<ul class="help">
+			<h3>帮助</h3>
+			<li><a href="#">在线反馈</a></li>
+			<li><a href="#">用户协议</a></li>
+			<li><a href="#">隐私政策</a></li>
+		</ul>
+		<ul class="download">
+			<h3>下载</h3>
+			<li><a href="#">Android 客户端</a></li>
+			<li><a href="#">iphone 客户端</a></li>
+		</ul>
+		<ul class="care">
+			<h3>关注</h3>
+			<li><a href="#">微信</a></li>
+			<li><a href="#">新浪微博</a></li>
+			<li><a href="#">QQ空间</a></li>			
+		</ul>
+		<ul class="orgnize">
+			<h3>组织</h3>
+			<li><a href="#">网站反馈群</a></li>
+			<li><a href="#">官方粉丝群</a></li>			
+		</ul>
+	</div>
+	<div class="end">
+		<p>互联网ICP备案：京ICP备14028348号-1 广播电视节目制作经营许可证：（京）字第08319号 网络文化经营许可证：京网文[2017]2369-247号</p>
+		<p>电信与信息服务业务经营许可证：京ICP证140448号 计算机信息网络国际联网单位备案：京公网安备11010502031601号</p>
+		<p>友际无限（北京）科技有限公司 违法和不良信息举报电话：010-84872896 邮箱：kefu@qiushibaike.com  </p>
+		<p>© Qiushibaike.com 糗事百科版权所有</p>       
+	</div>
+    <div class="changed"></div>
+
+
+	<script type="text/javascript">
+		$(function(){
+			$("li").click(function(){
+               $(this).addClass("change").siblings().removeClass("change") ;
+            })
+            $(".show").click(function(){
+                $(".changed").show()
+
+            })
+            $(".hide").click(function(){
+                $(".changed").hide()
+
+            })
+		})
+			
+	</script>
+</body>
+</html>

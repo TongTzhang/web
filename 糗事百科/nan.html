@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="./js/jquery-3.2.0.min.js"></script>
+	<title>Document</title>
+	<style>
+        html,body,ul,li {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .top {
+            
+            
+            border: 1px solid black;
+        }
+        .clearfix::after {
+            clear: both;
+            display: block;
+            height: 0;
+            content: "";
+        }
+        .top ul li {
+            padding-left:300px;
+            float: left;
+            background: yellow;
+            text-align: center;
+        }
+        .top ul li.selected {
+            background: red;
+        }
+        .top-bar .bar {
+            width: 900px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+        }
+        .hide {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+		<div class="top">
+        <ul class="bar clearfix">
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="top-bar">
+            <div class="bar">左</div>
+            <div class="bar hide">中</div>
+            <div class="bar hide">右</div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $(".bar li").click(function(){
+                $(this).addClass("selected").siblings().removeClass("selected");
+                var index = $(this).index();
+                $(".bar").eq(index).show().siblings().hide();
+            })
+
+           
+        })
+    </script>
+	
+</body>
+</html>
