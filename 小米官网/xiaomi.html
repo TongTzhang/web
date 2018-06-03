@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+	<style>
+		html,body,a,p,ul,li,h2,h3{
+			padding: 0;
+			margin:0;
+		}
+		a{
+			text-decoration: none;
+		}
+		ul{
+			list-style: none;
+		}
+		.hide{
+			display: none;
+		}
+		.show{
+			display: block;
+		}
+		.clearfix::after{
+			display: block;
+			clear:both;
+			content: "";
+			height: 0;
+		}
+		.top{
+			width: 100%;
+			height: 160px;
+		}
+		.top-img{
+			background: url("./images/title.jpg");
+			background-position: center 0;
+		}
+		.top-img a{
+			display: block;
+		    width: 100%;
+		    height: 120px;
+			}
+		.top-content{
+			/*position: relative;
+		    z-index: 30;*/
+		    height: 40px;
+		    font-size: 12px;
+		    color: #b0b0b0;
+		    background: #333;
+			    
+		}
+		.top-bar{
+			/*margin-right: auto;
+    		margin-left: auto;*/
+    		margin: 0 auto;
+			width: 1226px;
+			height: 40px;	
+		}
+		.top-bar-left{
+			float: left;
+		    height: 40px;
+		    line-height: 40px;
+		}
+		.top-bar-left ul li{
+			float: left;
+		}
+		.top-bar-left span{
+			margin: 0 5px;
+    		color: #424242;
+		}
+		.top-bar-left a{
+			color: #b0b0b0;
+		}
+		.top-bar-left a:hover{
+			color: #fff;
+		}
+		.shop-car{
+			width: 120px;
+    		margin-left: 15px;
+    		float: right;
+    		height: 40px;
+		}
+		.shop-car{
+			width: 120px;
+    		margin-left: 15px;
+    		float: right;
+    		height: 40px;
+    		position: relative;
+		}
+		
+		.shop-car i{
+			margin-right: 4px;
+		    font-size: 20px;
+		    line-height: 20px;
+		    vertical-align: -4px;
+		    font-family: "iconfont" !important;
+		    font-style: normal;
+		    -webkit-font-smoothing: antialiased;
+    		-webkit-text-stroke-width: 0.2px;
+		}
+		.shop-car a{
+			display: block;
+		    height: 40px;
+		    line-height: 40px;
+		    text-align: center;
+		    color: #b0b0b0;
+		    background: #424242;
+		}
+		.shop-car a:hover{
+			background: #fff;
+			color: #ff6700;
+		}
+		.shop-car span{
+			margin-left: -4px;
+		}
+		.shop-car:hover .car-info{
+			display: block;
+		}
+		.car-info{
+			position: absolute;
+			right: 0;
+			top: 40px;
+			width: 316px;
+		    padding: 15px 0 0;
+		    color: #424242;
+		    background: #fff;
+		    display: none;
+		    height: 100px;
+		    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+		    z-index: 3;
+		}
+		.loading{
+			margin: 5px 20px 20px;
+    		text-align: center;
+    		padding: 20px 0;
+		}
+		.top-bar-right{
+			float: right;
+			line-height: 40px;
+		}
+		.top-bar-right ul li{
+			float: left;
+		}
+		.top-bar-right a{
+			color: #b0b0b0;
+			padding: 0 5px;
+		}
+		.top-bar-right a:hover{
+			color: #fff;
+		}
+		.top-bar-right span{
+			color:#424242;
+		}
+		.top-bar-right .message{
+			padding: 0 10px;
+		}
+		.menu{
+			height:100px;
+			position: relative;
+		}
+		.menu-bar{
+			width: 1226px;
+			margin: 0 auto;
+			height: 100px;
+		}
+		.logo{
+			float: left;
+		    width: 62px;
+		    margin-top: 22px;
+		}
+		.mi-logo{
+			display: block;
+		    width: 55px;
+		    height: 55px;
+    		background-color: #ff6700;
+		}
+		.mi-logo img{
+			width: 55px;
+		    height: 55px;
+		}
+		.menu-list{
+			float: left;
+    		width: 850px;
+		}
+		.menu-list ul{
+			float: left;
+		    width: 820px;
+		    height: 88px;
+		    padding: 12px 0 0 30px;
+		    
+		    font-size: 16px;
+		}
+		.menu-list .nav-category{
+			float: left;
+		    width: 127px;
+		    padding-right: 15px;
+		}
+		.menu-list ul li{
+			float: left;
+			padding: 26px 10px 38px;
+		    color: #333;
+			
+		}
+		.menu-list ul li:hover{
+			color:#ff6700;
+		}
+		.menu-list ul li:hover .menu-result{
+			display: block;
+		}
+		.menu-search{
+			float: right;
+		    width: 296px;
+		    margin-top: 25px;
+		}
+		.search-form{
+			position: relative;
+		    width: 296px;
+		    height: 50px;
+		}
+		.search-text{
+			position: absolute;
+		    top: 0;
+		    right: 51px;
+		    /* z-index: 1; */
+		    width: 244px;
+		    height: 48px;
+		    padding: 0 10px;
+		    border: 1px solid #e0e0e0;
+		    font-size: 14px;
+		    line-height: 48px;
+		}
+		.choosed{
+			border: 1px solid #ff6700;
+		}
+		.search-btn {
+			position: absolute;
+		    right: 0;
+		    
+		    width: 52px;
+		    height: 48px;
+		    border: 1px solid #e0e0e0;
+		    font-size: 24px;
+		    line-height: 24px;
+		    background: #fff;
+		    color: #616161;
+		    
+		}
+		.search-hot-words{
+			position: absolute;
+		    top: 14px;
+		    right: 62px;
+		    
+		    text-align: right;
+		}
+		.search-hot-words a{
+			display: inline-block;
+		    margin-left: 5px;
+		    padding: 0 5px;
+		    font-size: 12px;
+		    background: #eee;
+		    color: #757575;
+		}
+		.search-hot-words a:hover{
+			background: #ff6700;
+    		color: #fff;
+		}
+		.search-list{
+			display: none;
+			position: absolute;
+		    left: 0;
+		    top: 50px;
+		   
+		    z-index: 2;
+		    width: 243px;
+		    border: 1px solid #ff6700;
+		    border-top: 0;
+		    background: #fff;
+		}
+		.search-list ul li{
+			padding: 5px 0;
+		}
+		.search-list ul li:hover{
+			background: #eee;
+		}
+		.search-list a{
+			padding: 6px 15px;
+		    font-size: 12px;
+		    color: #424242;
+		}
+		.search-list span{
+			display: inline-block;
+			float: right;
+			padding-right: 15px;
+			color: #b0b0b0;
+		}
+		.menu-result{
+			display: none;
+			position: absolute;
+		    top: 100px;
+		    left: 0;
+		    z-index: 4;
+		    width: 100%;
+		    height: 229px;
+		    border-top: 1px solid #e0e0e0;
+		    background: #fff;
+		    box-shadow: 0 3px 4px rgba(0,0,0,0.18);
+		}
+		.result-list{
+			width: 1226px;
+			margin: 0 auto;
+
+		}
+		.result-list ul{
+			font-size: 12px;
+		}
+		.result-list ul li{
+			float: left;
+		    width: 180px;
+		    padding: 35px 12px 0;
+		    text-align: center;
+		    position: relative;
+		}
+		.result-list .first::before{
+			width: 0px;
+		    height: 0px;
+		}
+		.result-list ul li::before{
+			position: absolute;
+		    left: 0;
+		    top: 35px;
+		    
+		    width: 1px;
+		    height: 100px;
+		    content: "";
+		    background-color: #e0e0e0;
+		}
+		.figure{
+			width: 160px;
+		    height: 110px;
+		    margin: 0 auto 16px;
+		    text-align: center;
+		}
+		.figure img{
+			width: 160px;
+    		height: 110px;
+		}
+		.title{
+			
+    		line-height: 20px;
+		}
+		.title a{
+			color: #333;
+		}
+		.price{
+
+		    line-height: 20px;
+		    color: #ff6700;
+		}
+		.price span{
+			color: #b0b0b0;
+			text-decoration: line-through;
+		}
+		.flags{
+			position: absolute;
+		    top: -1px;
+		    left: 0;
+		    
+		    width: 100%;
+		    font-size: 12px;
+		    text-align: center;
+
+		}
+		.flags span{
+			display: inline-block;
+		    height: 18px;
+		    padding: 1px 20px;
+		    border: 1px solid #ff6700;
+		    color: #ff6700;
+		}
+		/*.menu-list li .xiaomi:hover .menu-result{
+			display: block;
+		}*/
+		.middle{
+			width: 1226px;
+			margin: 0 auto;
+			position: relative;
+			height: 460px;
+			
+			
+		}
+		.middle-content{
+			
+			position: relative;
+			/*overflow: hidden;*/
+			
+		}
+		.middle-bar{
+			width: 234px;
+    		height: 460px;
+    		position: absolute;
+    		top:0;
+    		left: 0;
+    		font-size: 14px;
+		}
+		.middle-content .middle-bar ul{
+			height: 420px;
+		    border: 0;
+		    color: #fff;
+		    /* background: #333; */
+		    background: rgba(0,0,0,0.6);
+		    padding: 20px 0;
+		}
+		.middle-content .middle-bar ul>li{
+			width: 234px;
+			height: 42px;
+			position: relative;
+		}
+		.middle-content .middle-bar ul>li:hover{
+			background: #ff6700;
+		}
+		.middle-content .middle-bar ul>li>a{
+			padding-left: 30px;
+		    height: 42px;
+		    line-height: 42px;
+		    color: #fff;
+		}
+		.middle-content .middle-bar i{
+			position: absolute;
+			top: 12px;
+    		right: 20px;
+			background: url("./images/right.png");
+			background-repeat: no-repeat;
+			display: block;
+			width: 16px;
+			height: 16px;
+
+		}
+		.middle-content .icon{
+			position: absolute;
+			right: 28px;
+			top:430px;
+			height: 10px;
+			width: 140px;
+		}
+		.middle-content .icon li{
+			float: left;
+			margin: 0 5px;
+			width: 6px;
+			height: 6px;
+			border: 2px solid #fff;
+		    border-color: rgba(255,255,255,0.3);
+		    border-radius: 10px;
+		    background: rgba(0,0,0,0.4);
+		}
+		.middle-content .icon li:hover{
+			background: rgba(255,255,255,0.4);
+			border-color: rgba(0,0,0,0.4);
+		}
+		.middle-content .icon li.selected{
+			background: rgba(255,255,255,0.4);
+			border-color: rgba(0,0,0,0.4);
+		}
+		.left{
+			background: url("./images/icon-slides.png");
+			background-position: -84px 50%;
+			background-repeat: no-repeat;
+			width: 41px;
+		    height: 69px;
+		    position: absolute;
+		    top:195px;
+		    left: 234px;
+		    
+		}
+		.left:hover{
+			background: url("./images/icon-slides.png");
+			background-position: 0px 50%;
+		}
+		.right:hover{
+			background: url("./images/icon-slides.png");
+			background-position: -43px 50%;
+		}
+		.right{
+			background: url("./images/icon-slides.png");
+			background-position: -125px 50%;
+			background-repeat: no-repeat;
+			width: 41px;
+		    height: 69px;
+		    position: absolute;
+		    top:195px;
+		    right:4px;
+		    
+		}
+		
+		
+
+		
+		.middle-content-img li{
+			width: 1226px;
+			height: 460px;
+			float: left;
+			position: absolute;
+		}
+		.list{
+			
+			width: 1226px;
+			margin: 0 auto;
+			height: 635px;
+		}
+		.list-ad{
+			margin-top: 14px;
+			height: 170px;
+			margin-bottom:26px;
+		}
+		.tip{
+			width: 234px;
+			float: left;
+			height: 170px;
+			background: #5f5750;
+		}
+		.tip-list{
+			padding: 3px;
+		    
+		    font-size: 12px;
+		    text-align: center;
+		    background: #5f5750;
+		}
+		.tip-ad{
+			width: 978px;
+			float: left;
+    		margin-left: 14px;
+		}
+		.tip-ad li{
+			float: left;
+		    width: 316px;
+		    height: 170px;
+		    margin-left: 15px;
+		}
+		.tip-ad a{
+			display: block;
+    		height: 170px;
+		}
+		.tip-ad img{
+			width: 316px;
+		    height: 170px;
+		}
+		.tip-ad li:hover{
+			box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+		}
+		.tip-ad-img .first{
+			margin-left: 0;
+		}
+
+		.star-title{
+			position: relative;
+    		height: 58px;
+		}
+		.star-title h2{
+			font-size: 22px;
+		    font-weight: 200;
+		    line-height: 58px;
+		    color: #333;
+		}
+		.more{
+			position: absolute;
+		    top: 24px;
+		    right: 0;
+		}
+		.bn-left, .bn-right{
+			width: 24px;
+		    height: 16px;
+		    padding: 3px 5px;
+		    border: 1px solid #e0e0e0;
+		    font-size: 16px;
+		    line-height: 16px;
+		    text-align: center;
+		    float: left;
+		    margin-left: -1px;
+		     
+		}
+		.bn-left img, .bn-right img{
+			background-color:#b0b0b0;
+		}
+		.star-bar{
+			width: 1226px;
+		    overflow: hidden;
+		    height: 340px;
+		    padding-bottom: 40px;
+		}
+		.star-list{
+			width: 2480px;
+    		margin-left: -1240px;
+    		height: 340px;
+		}
+		.star-list li{
+			float: left;
+			height: 300px;
+			width: 234px;
+		    padding-top: 39px;
+		    border-top-width: 1px;
+		    border-top-style: solid;
+		    text-align: center;
+		    background: #fafafa;
+		    margin-right: 14px;
+		}
+		.star-list .star-img{
+			display: block;
+		    width: 160px;
+		    margin: 0 auto 22px;
+		}
+		.star-list img{
+			width: 160px;
+    		height: 160px;
+		}
+		.star-list .star-list-1{
+			border-top-color: #ffac13;
+		}
+		.star-list h3, .row-bar h3{
+			margin: 0 20px 3px;
+		    font-size: 14px;
+		    font-weight: 400;
+		    
+		}
+		.star-list a, .row-bar a{
+			color: #212121;
+		}
+		.star-list .desc, .row-bar .desc{
+			height: 18px;
+		    margin: 0 20px 12px;
+		    font-size: 12px;
+		    color: #b0b0b0;
+		}
+		.star-list .price, .row-bar .price{
+			color: #ff6709;
+			font-size: 14px;
+		}
+		.main{
+			padding-top: 60px;
+			background: #f5f5f5;
+		}
+		.main-content{
+			width: 1226px;
+			margin: 0 auto;
+		}
+		.main-first{
+			height: 686px;
+			margin-bottom: 8px;
+			position: relative;
+		}
+		.first-content{
+			position: absolute;
+		}
+		.first-title{
+			height: 58px;
+		}
+		.first-title h2{
+			font-size: 22px;
+		    font-weight: 200;
+		    line-height: 58px;
+		    color: #333;
+		}
+		.first-bar{
+			position: absolute;
+		    top: 0;
+		    right: 0;
+		}
+		.first-bar ul{
+			padding: 16px 0 0;
+			font-size: 16px;
+		}
+		.first-bar ul li{
+			margin: 0 0 0 30px;
+			color: #424242;
+			cursor: pointer;
+			float: left;
+		}
+		/*.first-bar ul li:hover{
+			color: #ff6700;
+    		border-bottom: 2px solid #ff6700;
+		}*/
+		.first-bar .hot{
+			color: #ff6700;
+    		border-bottom: 2px solid #ff6700;
+		}
+		.row{
+			/*margin-left: -14px;*/
+		}
+		.row-left{
+			/*margin: 0 0 -14px -14px;*/
+			height: 614px;
+			width: 234px;
+			float: left;
+		}
+		.row-left img{
+			height: 614px;
+			width: 234px;
+		}
+		.row-right{
+			margin-left: 234px;
+		}
+		.row-bar{
+			width: 992px;
+			height: 614px;
+
+
+		}
+		.row-bar li{
+			height: 246px;
+			width: 234px;
+    		padding: 34px 0 20px;
+    		float: left;
+    		margin-left: 14px;
+    		margin-bottom: 14px;
+    		background: #fff;
+    		text-align: center;
+    		position: relative;
+
+		}
+		.row-bar-img{
+			width: 150px;
+		    height: 150px;
+		    margin: 0 auto 18px;
+		}
+		.row-bar-img img{
+			width: 150px;
+    		height: 150px;
+		}
+		.flag{
+			position: absolute;
+		    top: 0;
+		    left: 50%;
+		    
+		    width: 64px;
+		    height: 20px;
+		    margin-left: -32px;
+		    font-size: 12px;
+		    line-height: 20px;
+		    text-align: center;
+		    color: #fff;
+		    background-color: #e53935;
+		}
+		.row-bar li .bar-tip{
+			height: 76px;
+			position: absolute;
+		    bottom: 0;
+		    left: 0;
+		    z-index: 3;
+    		width: 234px;
+    		font-size: 12px;
+    		background: #ff6700;
+    		display: none;
+		}
+		.bar-tip a{
+			
+    		padding: 8px 30px;
+    		/*text-align: left;*/
+    		
+		}
+		.bar-tip .review{
+			margin-bottom: 5px;
+    		color: #fff;
+    		
+		}
+		.bar-tip .author{
+			color: rgba(255,255,255,0.6);
+			display: block;
+		}
+		.bottom{
+			width: 1226px;
+			margin: 0 auto;
+		}
+		.footer-service{
+			padding: 27px 0;
+    		border-bottom: 1px solid #e0e0e0;
+		}
+		.list-service li{
+			float: left;
+		    width: 19.8%;
+		    height: 25px;
+		    border-left: 1px solid #e0e0e0;
+		    font-size: 16px;
+		    line-height: 25px;
+		    text-align: center;
+		}
+	</style>
+	
+</head>
+
+<body>
+	<div class="top">
+		<div class="top-img">
+			<a href="https://www.mi.com/a/h/2937.html?client_id=180100041086&masid=17409.0179"></a>
+		</div>
+		<div class="top-content">
+			<div class="top-bar">
+				<div class="top-bar-left">
+					<ul class="clearfix">
+						<li><a href="">小米商城</a><span>|</span></li>
+						
+						<li><a href="">MIUI</a><span>|</span></li>
+						
+						<li><a href="">米聊</a><span>|</span></li>
+						
+						<li><a href="">游戏</a><span>|</span></li>
+						
+						<li><a href="">多看阅读</a><span>|</span></li>
+						
+						<li><a href="">云服务</a><span>|</span></li>
+						
+						<li><a href="">金融</a><span>|</span></li>
+						
+						<li><a href="">米币</a><span>|</span></li>
+						
+						<li><a href="">小米商城手机版</a><span>|</span></li>
+						
+						<li><a href="">问题反馈</a><span>|</span></li>
+						
+						<li><a href="">Select Region</a></li>
+
+					</ul>
+				</div>
+				<div class="shop-car">
+					<a href=""><i class="car">&#xe60c</i>购物车<span>（0）</span></a>
+					<div class="car-info">
+						<div class="loading">
+							购物车中还没有商品，赶紧选购吧！
+						</div>
+					</div>
+				</div>
+				<div class="top-bar-right">
+					<ul class="clearfix">
+						<li><a href="">登录</a><span>|</span></li>
+						<li><a href="">注册</a><span>|</span></li>
+						<li><a class="message" href="">消息通知</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="menu">
+		<div class="menu-bar">
+			<div class="logo">
+				<a class="mi-logo" href=""><img src="./images/mi-logo.png" alt=""></a>
+			</div>
+			<div class="menu-list">
+				<ul class="clearfix">
+					<li class="nav-category"></li>
+					<li class="xiaomi">小米手机
+						<div class="menu-result">
+							<div class="result-list">
+								<ul class="clearfix">
+									<li class="first">
+										<div class="figure">
+											<a href=""><img src="./images/mix2320-220.png" alt=""></a>
+										</div>
+										<div class="title">
+											<a href="">小米MIX 2</a>
+										</div>
+										<p class="price">3299起</p>
+										<div class="flags"><span>新品</span></div>
+									</li>
+									<li>
+						
+										<div class="figure">
+											<a href=""><img src="./images/mix2320-220.png" alt=""></a>
+										</div>
+										<div class="title">
+											<a href="">小米MIX 2</a>
+										</div>
+										<p class="price">3299起</p>
+										<div class="flags"><span>新品</span></div>
+									</li>
+							
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>红米
+						<div class="menu-result">
+							<div class="result-list">
+								<ul class="clearfix">
+									<li class="first">
+										<div class="figure">
+											<a href=""><img src="./images/320-220-1.png" alt=""></a>
+										</div>
+										<div class="title">
+											<a href="">小米MIX 2</a>
+										</div>
+										<p class="price">3299起</p>
+										<div class="flags"><span>新品</span></div>
+									</li>
+									<li>
+						
+										<div class="figure">
+											<a href=""><img src="./images/mix2320-220.png" alt=""></a>
+										</div>
+										<div class="title">
+											<a href="">小米MIX 2</a>
+										</div>
+										<p class="price">3299起</p>
+										<div class="flags"><span>新品</span></div>
+									</li>
+							
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>笔记本</li>
+					<li>电视</li>
+					<li>盒子</li>
+					<li>新品</li>
+					<li>路由器</li>
+					<li>智能硬件</li>
+					<li>服务</li>
+					<li>社区</li>
+
+				</ul>
+
+			</div>
+			
+			<div class="menu-search">
+				<form class="search-form clearfix" action="//search.mi.com/search" method="get">
+					<input class="search-text" type="search">
+					<input type="submit" class="search-btn" value="">
+					<div class="search-hot-words">
+						<a href="">红米4X</a>
+						<a href="">小米Note 3 直降300</a>
+					</div>
+					<div class="search-list">
+						<ul class="clearfix">
+							<li><a href="">小米6<span>约有7件</span></a></li>
+							<li><a href="">红米Note 4X<span>约有8件</span></a></li>
+							<li><a href="">小米MIX 2<span>约有1件</span></a></li>
+							<li><a href="">小米Max 2<span>约有3件</span></a></li>
+							<li><a href="">小米5X<span>约有3件</span></a></li>
+							<li><a href="">手环<span>约有6件</span></a></li>
+							<li><a href="">耳机<span>约有19件</span></a></li>
+							<li><a href="">充电宝<span>约有19件</span></a></li>
+							<li><a href="">运动鞋<span>约有2件</span></a></li>
+							<li><a href="">路由器<span>约有17件</span></a></li>
+							<li><a href="">小米盒子<span>约有8件</span></a></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="middle">
+		<div class="middle-content">
+			<ul class="middle-content-img clearfix">
+				<li><a href=""><img src="./images/xmad_15094571680872_tQHLk.jpg" alt=""></a></li>
+				<li class="hide"><a href=""><img src="./images/xmad_15094573283766_MlNqh.jpg" alt=""></a></li>
+				<li class="hide"><a href=""><img src="./images/xmad_15077714738381_erTKQ.jpg" alt=""></a></li>
+				<li class="hide"><a href=""><img src="./images/xmad_15058906332794_gQDJX.jpg" alt=""></a></li>
+				<li class="hide"><a href=""><img src="./images/xmad_15094450170762_VlWgh.jpg" alt=""></a></li>
+				<li class="hide"><a href=""><img src="./images/xmad_15057916296159_nUYKy.jpg" alt=""></a></li>
+				<li class="hide"><a href=""><img src="./images/xmad_150945679272_euVbH.jpg" alt=""></a></li>
+
+			</ul>
+			<ul class="icon clearfix">
+				<li class="selected"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				
+			</ul>
+			<div class="left"></div>
+			<div class="right"></div>
+			<div class="middle-bar">
+				<ul class="clearfix">
+					<li><a href="">手机 电话卡<i></i></a></li>
+					<li><a href="">笔记本<i></i></a></li>
+					<li><a href="">电视 盒子<i></i></a></li>
+					<li><a href="">路由器 智能硬件<i></i></a></li>
+					<li><a href="">移动电源 电池 插线板<i></i></a></li>
+					<li><a href="">耳机 音箱<i></i></a></li>
+					<li><a href="">保护套 贴膜<i></i></a></li>
+					<li><a href="">线材 支架 存储卡<i></i></a></li>
+					<li><a href="">箱包 服饰 鞋 眼镜<i></i></a></li>
+					<li><a href="">米兔 生活周边<i></i></a></li>
+
+				</ul>
+			</div>
+			
+		</div>
+	</div>
+	<div class="list">
+		<div class="list-ad">
+			<div class="tip">
+				<ul class="tip-list clearfix">
+					
+				</ul>
+			</div>
+			<div class="tip-ad">
+				<ul class="tip-ad-img">
+					<li class="first"><a href=""><img src="./images/xmad_15094575641081_SxnJl.jpg" alt=""></a></li>
+					<li><a href=""><img src="./images/xmad_15067798057483_gquZc.jpg" alt=""></a></li>
+					<li><a href=""><img src="./images/xmad_15095081181632_veEwQ.jpg" alt=""></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="star">
+			<div class="star-title">
+				<h2>小米明星单品</h2>
+				<div class="more">
+					<div class="bn-left" href=""><img src="./images/left.png" alt=""></div>
+					<div class="bn-right" href=""><img src="./images/right.png" alt=""></div>
+				</div>
+
+			</div>
+			<div class="star-bar">
+				<ul class="star-list clearfix">
+					<li class="star-list-1">
+						<a class="star-img" href=""><img src="./images/xmad_1496643954435_EcHtv.png" alt=""></a>
+						<h3><a href="">小米Max 2 </a></h3>
+						<p class="desc">大屏大电量，享多重好礼</p>
+						<p class="price">1399元起</p>
+					</li>
+					<li><a class="star-img" href=""><img src="./images/xmad_1496643954435_EcHtv.png" alt=""></a></li>
+					<li><a class="star-img" href=""><img src="./images/xmad_1496643954435_EcHtv.png" alt=""></a></li>
+					<li><a class="star-img" href=""><img src="./images/xmad_1496643954435_EcHtv.png" alt=""></a></li>
+					<li><a class="star-img" href=""><img src="./images/xmad_1496643954435_EcHtv.png" alt=""></a></li>
+					<li class="star-list-1"><a href=""><img src="./images/xmad_15078617619273_gRwzn.png" alt=""></a></li>
+					<li><a class="star-img" href=""><img src="./images/xmad_1496643954435_EcHtv.png" alt=""></a></li>
+					<li><a class="star-img" href=""><img src="./images/xmad_1496643954435_EcHtv.png" alt=""></a></li>
+					<li><a class="star-img" href=""><img src="./images/xmad_1496643954435_EcHtv.png" alt=""></a></li>
+					<li><a class="star-img" href=""><img src="./images/xmad_1496643954435_EcHtv.png" alt=""></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="main-content">
+			<div class="main-first">
+				<div class="first-title">
+					<h2>家电</h2>
+				</div>
+				<div class="first-bar">
+					<ul class="clearfix">
+						<li class="hot">热门</li>
+						<li class="movie">电视影音</li>
+						<li>电脑</li>
+						<li>家居</li>
+					</ul>
+				</div>
+				<div class="first-content">
+					<div class="row clearfix">
+						<div class="row-left">
+							<a href=""><img src="./images/xmad_14950222431232_Twnyl.jpg" alt=""></a>
+						</div>
+						<div class="row-right">
+							<ul class="row-bar clearfix">
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+					</div>	
+				</div>
+				<div class="first-content row-second hide">
+					<div class="row clearfix">
+						<div class="row-left">
+							<a href=""><img src="./images/xmad_14950222431232_Twnyl.jpg" alt=""></a>
+						</div>
+						<div class="row-right">
+							<ul class="row-bar clearfix">
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1503909300.25797209!220x220.png" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+								<li>
+									<div class="row-bar-img">
+										<a href=""><img src="./images/pms_1500287084.72131750!220x220.jpg" alt=""></a>
+									</div>
+									<h3><a href="">小米电视4A 32" </a></h3>
+									<p class="desc">64位四核处理器／1GB+4GB大内存</p>
+									<p class="price">949元
+										<span>1199元</span>
+									</p>
+									<div class="flag">享8折</div>
+									<div class="bar-tip">
+										<a href="">
+											<span class="review">听说小米客服满腹经纶，能不能为在下对副对联！上联是 ...</span>
+											<span class="author"> 来自于 断点 的评价 </span>
+										</a>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+					</div>	
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="footer-service">
+			<ul class="list-service clearfix">
+				<li><a href="">预约维修服务</a></li>
+				<li><a href="">7天无理由退货</a></li>
+				<li><a href="">15天免费换货</a></li>
+				<li><a href="">满150元包邮</a></li>
+				<li><a href="">520余家售后网点</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+
+	
+
+
+
+	<script>
+		$(function(){
+			$(".search-text").click(function(){
+				// $(this).addClass("choosed");
+				$(".search-hot-words").hide();
+				$(".search-list").show();
+			})
+			$(".middle").click(function(){
+				$(".search-hot-words").show();
+				$(".search-list").hide();
+			})
+
+
+			var nowIndex = $(".icon li.selected").index();
+			console.log(nowIndex);
+			function right(){
+                if(nowIndex == 6) { nowIndex = -1; }
+                $(".icon li").eq(nowIndex+=1).addClass("selected").siblings().removeClass("selected");
+                $(".middle-content-img li").eq(nowIndex).fadeIn().siblings().fadeOut();
+            }
+            function left(){
+				if(nowIndex==0){ nowIndex=7; }
+				$(".icon li").eq(nowIndex-=1).addClass("selected").siblings().removeClass("selected");
+				$(".middle-content-img li").eq(nowIndex).fadeIn().siblings().fadeOut();
+			}
+			$(".left").click(function(){
+				left()
+			})
+			$(".right").click(function(){
+				right()
+			})
+			function exportTimer(){
+				timer = setInterval(function(){
+					right();	
+				},2000);
+			}
+			exportTimer();
+
+			$(".left").hover(
+				function(){
+					clearInterval(timer)
+				},
+				function(){
+					exportTimer();
+				}
+			)
+			$(".right").hover(
+				function(){
+					clearInterval(timer)
+				},
+				function(){
+					exportTimer();
+				}				
+			)
+			console.log($(".star-list"))
+			console.log($(".bn-left"))
+			$(".bn-left").click(function(){				
+				$(".star-list").stop(true,true).animate({
+					marginLeft:"0px",
+				},500)
+			})
+			
+			$(".bn-right").click(function(){				
+				$(".star-list").stop(true,true).animate({
+					marginLeft:"-1240px",
+				},500)
+			})
+			
+			$(".row-bar li").mouseover(function(){
+				$(this).children(".bar-tip").slideDown();
+			})
+			$(".row-bar li").mouseleave(function(){
+				$(this).children(".bar-tip").slideUp();
+			})
+
+			$(".first-bar li").mouseover(function(){
+				$(this).addClass("hot").siblings().removeClass("hot");
+			})
+			
+			$(".first-bar li.movie").mouseover(function(){
+				// console.log($(".first-bar li.movie"))
+				console.log($(this).parent().parent().siblings(".row-second"))
+				$(this).parent().parent().siblings(".row-second").fadeIn();
+				
+			})
+
+		})
+	</script>
+</body>
+</html>
