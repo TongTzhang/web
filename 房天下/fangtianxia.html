@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	
+		html,body,ul,li{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.top{
+			height: 50px;
+			width: 100%;
+			background-image: url("./images/newgif.gif");
+			background-position: 0px -666px;
+		}
+		.clearfix::after{
+			display: block;
+			content: "";
+			clear:both;
+			height:0;
+		}
+		.bar{
+			width: 1200px;
+            margin: 0 auto;
+            height: 50px;
+            position: relative;
+		}
+
+		.top-bar ul li{
+			float: left;
+			height: 50px;
+			line-height: 50px;
+			padding:0 8px;
+		}
+		.nationwide:hover .nationwide-bar{
+			display: block;
+		}
+		
+		.top a{
+			color:#fff;
+			font-size: 14px;
+
+		}
+		.top-bar .phonenumber{
+			float:right;
+		}
+		.picture{
+			position: relative;
+			width:100%;
+			height: 464px;
+			overflow: hidden;
+
+		}
+		.picture .top-img{
+			position: absolute;
+			
+			height: 464px;
+			width:2000px;
+			left: 50%;
+			margin-left:-1000px;
+			z-index: 1;
+
+		}
+		.top-img li{
+			height: 464px;
+			width:2000px;
+			float: left;
+			position: absolute;
+		}
+
+		.nationwide-bar {
+			position: absolute;
+            left: 0;
+            
+            display: none;
+            background: #fff;
+            z-index: 2;
+           
+            
+		}
+		.top-bar .nationwide-bar ul{
+			
+			position: absolute;
+			text-align: left;
+		}
+		.top-bar .nationwide-bar a{
+			
+			color:#666;
+			font-size: 12px;			                                   
+		}
+		.nationwide-bar a{
+			color:red;
+		}
+		
+		.hide{
+			display: none;
+		}
+		.roll{
+			position: absolute;
+			bottom:20px;
+			left: 600px;
+			z-index: 2;
+		}
+		.roll li{
+			float:left;
+			width: 20px;
+			height: 20px;
+			background:#fff;
+			margin:0 10px;
+			border-radius: 100%;
+		}
+		.roll li.selected{
+			background: red;
+		}
+		.left{
+			position: absolute;
+			left:200px;
+			top:200px;
+			width:27px;
+			height: 44px;
+			background-image: url("./images/newgif.gif");
+			background-position: 0px -1068px;
+			z-index: 2;
+		}
+		.right{
+			position: absolute;
+			right:200px;
+			top:200px;
+			width:27px;
+			height: 44px;
+			background-image: url("./images/newgif.gif");
+			background-position: 0px -1124px;
+			z-index: 2;
+		}
+		.left:hover{
+			background-position:-43px -1068px;
+		}
+		.right:hover{
+			background-position: -43px -1124px;
+		}
+		.window{
+			position: absolute;
+            
+            width: 720px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -360px;
+            background: rgba(0,0,0,0.6);
+            z-index: 3;
+            box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.6);
+		}
+		.slogo{
+			float: left;
+			margin:25px 0 0 25px;
+		}
+		.country{
+			float:right;
+			color: #fff;
+			font-size: 14px;
+			padding:41px 358px 0 0;
+
+		}
+		.edit{
+			height: 10px;
+			line-height: 10px;
+			position: absolute;
+			margin:74px 0 0 27px;
+		}
+		.edit ul li{
+			
+			float: left;
+			padding:15px;
+		}
+		.edit a{
+			
+			font-size: 15px;
+		}
+		.edit li img{
+			padding-left: 10px;
+		}
+		.edit li:hover {
+			border-radius: 3px;
+			background: #c00;
+		}
+		.more-again{
+			position: absolute;
+			margin: 83px 0 0 627px;
+		}
+		.more-again span{
+			color: #fff;
+		}
+		.more-again img{
+			position: absolute;
+			padding: 9px 0 0 6px;
+		}
+		.more-again-bar{
+			
+			position: absolute;
+			display: none;
+			
+			background: #fff;
+		}
+		/*.textarea{
+			width: 610px;
+			height:42px;
+		}*/
+		.content{
+			position: absolute;
+			margin-top: 460px;
+			width: 100%;
+			height:54px;
+			border-bottom: 1px solid #ddd;
+			padding:23px 0;
+
+		}
+		.middle{
+			width: 1200px;
+			height:54px;
+			margin:0 auto;
+		}
+		.middle .buyhouse{
+			float:left;
+			height: 54px;
+			width:240px;
+			border-right: 1px dashed #ddd;
+			position: relative;
+		}
+		.middle .sellhouse{
+			float:left;
+			height: 54px;
+			width:172px;
+			border-right: 1px dashed #ddd;
+			position: relative;
+		}
+		.middle .renthouse{
+			float:left;
+			height: 54px;
+			width:227px;
+			border-right: 1px dashed #ddd;
+			position: relative;
+		}
+		.middle .fixhouse{
+			float:left;
+			height: 54px;
+			width:232px;
+			border-right: 1px dashed #ddd;
+			position: relative;
+		}
+		.middle .dirsellhouse{
+			float:left;
+			height: 54px;
+			width:220px;
+			
+			position: relative;
+		}
+		.middle .buyhouse .buyone, .middle .sellhouse .sellone, .middle .renthouse .rentone, .middle .fixhouse .fixone, .middle .dirsellhouse .dirsellone{
+			
+			height: 54px;
+			line-height: 54px;
+			font-size: 28px;
+
+		}
+		.buyone a, .sellone a, .rentone a, .fixone a, .dirsellone a{
+			color:#c00;
+
+		}
+		.buytwo a, .selltwo a, .renttwo a, .fixtwo a, .dirselltwo a{
+			color: #333;
+			font-size: 14px;
+		}
+		.middle .buyhouse .buytwo, .middle .sellhouse .selltwo, .middle .renthouse .renttwo, .middle .fixhouse .fixtwo, .middle .dirsellhouse .dirselltwo {
+			line-height: 15px;
+			font-size: 14px;
+			margin-left:80px;
+			top:-6px;
+			position: absolute;
+
+
+		}
+		.middle .buyhouse .buytwo .p1{
+			margin-right: 48px;
+		}
+		.middle .buyhouse .buytwo .p2, .middle .renthouse .renttwo .p1, .middle .fixhouse .fixtwo .p1, .middle .fixhouse .fixtwo .p2, .middle .dirsellhouse .dirselltwo .p1, .middle .dirsellhouse .dirselltwo .p2{
+			margin-right: 20px;
+		}
+		.middle .renthouse .renttwo .p2{
+			margin-right: 10px;
+		}
+		.middle .sellhouse, .middle .buyhouse, .middle .renthouse, .middle .fixhouse, .middle .dirsellhouse{
+			margin-left: 20px;
+		}
+		.bottom{
+			width: 1200px;
+			margin: 0 auto;
+			position: relative;
+			margin-top:585px;
+			
+		}
+		/*.first{
+			
+			width: 1198px;
+			height: 46px;
+			border-left: 1px solid #ddd;
+    		border-right: 1px solid #ddd;
+
+		}
+		.first {
+			float: left;
+			width: 399px;
+			text-align: center;
+			border-top:2px solid #c00;
+			font-size: 18px;
+			font-weight: bold;
+			height: 44px;
+			line-height: 44px;
+			border-right: 1px solid #ddd;
+
+		}
+		.first ul{
+			width: 1205px;
+			margin:0 auto;
+			padding: 20px 0 0 20px;
+		}
+		.first ul li{
+			float: left;
+		}*/
+		.search{
+			width: 600px;
+			height: 39px;
+			border: 1px solid #e8e7e3;
+			background-color:#fff;
+			margin:124px 0 0 40px;
+			
+
+		}
+		.look{
+			width: 60px;
+			height: 42px;
+			background-image:url("./images/newgif.gif");
+			background-position: 0 -285px;
+			margin-left: 541px;
+			margin-top: -2px;
+		}
+		.first{
+			width: 1198px;
+			height: 46px;
+			
+			border-left: 1px solid #ddd;
+    		border-right: 1px solid #ddd;
+		}
+		.first ul li{
+			float: left;
+			width: 398px;
+			text-align: center;
+			height: 43px;
+			line-height: 43px;
+			border-bottom: 1px solid #ddd;
+			border-top: 2px solid #ddd;
+			border-right: 1px solid #ddd;
+			font-size: 18px;
+			background: #f1f1f1;
+
+		}
+		.first ul li.selected{
+			border-top: 2px solid #c00;
+			font-weight: bold;
+			height: 44px;
+			line-height: 44px;
+			background: #fff;
+			border-bottom: 1px solid #fff;
+			border-right: 1px solid #ddd;
+		}
+		.first-box{
+			margin-top:8px;
+		}
+		.view1{
+			margin-left: 15px;
+			float: left;
+			width:259px;
+			height: 230px;
+			padding:10px 10px;
+			border: 1px solid #ddd;
+		}
+		.view1 img{
+			width: 260px;
+			height: 160px;
+
+
+		}
+		.info1{
+			margin-top:-26px;
+			height: 69px;
+			border: 1px solid #e7e7e7;
+		}
+		.ad1{
+			width: 129px;
+			height: 69px;
+			float: left;
+		}
+		.ad1 h1, .ad2 h1{
+			height: 30px;
+    		line-height: 30px;
+    		font-size: 18px;
+    		text-align: center;
+    		margin-top: 10px;
+		}
+		.ad1 p, .ad2 p{
+			font-size: 12px;
+    		color: #929292;
+    		text-align: center;
+    		margin-top:-11px;
+		}
+		.ad2{
+			float: left;
+			width: 129px;
+			height: 69px;
+			background-image: url("./images/hot.gif");
+			background-repeat: no-repeat;
+			margin: -69px 0 0 120px;
+		}
+		.hide {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+
+	</style>
+	<script src="./js/jquery-3.2.0.min.js"></script>
+</head>
+<body> 
+	<div class="top">
+		<div class="bar">
+			<div class="top-bar">
+				<ul class="clearfix">
+					<li class="nationwide">
+						<a href="#">全国<img src="./images/navicon.gif" alt=""></a>
+						<ul class="nationwide-bar">
+							<li><a href="#">全国</a></li>
+							<li><a href="#">北京</a></li>
+							<li><a href="#">上海</a></li>
+							<li><a href="#">广州</a></li>
+							<li><a href="#">深圳</a></li>
+							<li><a href="#">成都</a></li>
+						</ul>
+					</li>
+					<li class="homepage"><a href="#">首页</a></li>
+					<li class="newhouse">
+						<a href="#">新房</a>
+						<!-- <ul class="newhouse-bar">
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+						</ul> -->
+					</li>
+					<li class="oldhouse"><a href="#">二手房</a>
+					</li>
+					<li class="renting"><a href="#">租房</a></li>
+					<li class="checkprice"><a href="#">查房价</a></li>
+					<li class="decoration"><a href="#">装修家居</a></li>
+					<li class="officebuilding"><a href="#">写字楼</a></li>
+					<li class="shop"><a href="#">商铺</a></li>
+					<li class="forum"><a href="#">业主论坛</a></li>
+					<li class="houseproperty"><a href="#">房产百科</a></li>
+					<li class="mobile"><a href="#">移动APP</a></li>
+				    <div class="child-bar">
+					<li class="more"><a href="#">更多</a></li>
+				
+					<li class="phonenumber"><a href="#"><img src="./images/12377.jpg"></a></li>
+					
+					<li class="seehouse"><a href="#">看房</a></li>
+					
+					<li class="order"><a href="#">订单</a></li>
+					<li class="login"><a href="#">登录</a></li>
+					<li class="register"><a href="#">注册</a></li>
+					</div>
+				</ul>
+			</div>
+		</div>
+		<div class="picture">
+			<ul class="top-img">
+				<li>
+					<a href="#"><img src="./images/yellow.jpg"></a>
+				</li>
+				<li class="hide">
+					<a href="#"><img src="./images/pink.jpg"></a>
+				</li>
+				<li class="hide">
+					<a href="#"><img src="./images/white.jpg"></a>
+				</li>
+			</ul>
+			<ul class="roll">
+				<li class="selected"></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div class="left"></div>
+			<div class="right"></div>
+		</div>
+	 	<div class="window">
+	 		<div class="slogo">
+	 			<img src="./images/slogo.png" alt="">  
+	 		</div>
+	 		<div class="tip">
+	 			<div class="country">全国
+	 				<a href="#">【切换城市】</a>
+	 			</div>
+
+	 		</div>
+	 		<div class="edit">
+	 			<ul class="clearfix">
+	 				<li><a href="#">查房价</a></li>
+	 				<li><a href="#">买新房</a></li>
+	 				<li><a href="#">买二手房</a></li>
+	 				<li><a href="#">找房租</a></li>
+	 				<li><a href="#">房产快讯</a></li>
+	 				<li><a href="#">海外房产</a></li>
+	 				<li><a href="#">地图找房</a></li>
+	 				<!-- <li><a href="#">更多<img src="./images/navicon1.gif" alt=""></a></li> -->
+
+	 			</ul>
+	 		</div>
+	 		<div class="more-again">
+	 			<span>更多</span><img src="./images/navicon1.gif" alt="">
+	 			<ul class="more-again-bar">
+	 				<li><a href="#">房产问答</a></li>
+	 				<li><a href="#">房产知识</a></li>
+	 				<li><a href="#">短租</a></li>
+	 			</ul>
+	 		</div>
+	 		<div class="search">
+	 			<div class="look"></div>
+	 		</div>	
+	 		
+	 		<!-- <textarea name="" id="" cols="610" rows="42" placeholder="请输入小区名称或地址，给自己的房子估个价"></textarea> -->
+	 	</div>
+	</div>
+	<div class="content">
+		<div class="middle">
+			<div class="buyhouse">
+				<div class="buyone">
+					<a href="#">买房</a>
+				</div>
+				<div class="buytwo">
+					<p>
+					<a href="#" class="p1">新房</a>
+					<a href="#">二手房</a>
+					</p>
+					<p>
+					<a href="#" class="p2">业主论坛</a>
+					<a href="#">海外房产</a>	
+					</p>
+				</div>
+			</div>
+			<div class="sellhouse">
+				<div class="sellone">
+					<a href="#">卖房</a>
+				</div>
+				<div class="selltwo">
+					<p>
+					<a href="#">我要卖房</a>
+					
+					</p>
+					<p>
+					<a href="#">查房价</a>
+						
+					</p>
+				</div>
+			</div>	
+			<div class="renthouse">
+				<div class="rentone">
+					<a href="#">租房</a>
+				</div>
+				<div class="renttwo">
+					<p>
+					<a href="#" class="p1">找房租</a>
+					<a href="#">短租</a>
+					</p>
+					<p>
+					<a href="#" class="p2">我要出租</a>
+					<a href="#">月付公寓</a>	
+					</p>
+				</div>
+			</div>
+			<div class="fixhouse">
+				<div class="fixone">
+					<a href="#">装修</a>
+				</div>
+				<div class="fixtwo">
+					<p>
+					<a href="#" class="p1">装修案例</a>
+					<a href="#">我要装修</a>
+					</p>
+					<p>
+					<a href="#" class="p2">找装饰公司</a>
+					<a href="#">抢优惠</a>	
+					</p>
+				</div>
+			</div>
+			<div class="dirsellhouse">
+				<div class="dirsellone">
+					<a href="#">直销</a>
+				</div>
+				<div class="dirselltwo">
+					<p>
+					<a href="#" class="p1">新房直销</a>
+					<a href="#">二手房源</a>
+					</p>
+					<p>
+					<a href="#" class="p2">金融贷款</a>
+					<a href="#">我要加盟</a>	
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="first">
+			<ul class="clearfix">
+				<li class="selected"><a href="#">热销楼盘</a></li>
+				<li><a href="#">品牌地产</a></li>
+				<li><a href="#">全城好房</a></li>
+			</ul>
+		<div class="first-rew">
+			<div class="rew1">
+	            <div class="view1">
+	            	<a href="#"><img src="./images/view1.jpg" alt=""></a><img src="" alt="">
+	            	<div class="info1">
+	            		<div class="ad1">
+	            			<h1><a href="#">丰台</a></h1>
+	            			<p>西四环边</p>
+	            		</div>
+	            		<div class="ad2">
+	            			<h1>改善之选</h1>
+	            			<p>科技大宅</p>
+	            		</div>
+	            	</div>
+	            </div>
+	            <div class="view1">
+	            	<a href="#"><img src="./images/view2.jpg" alt=""></a><img src="" alt="">
+	            	<div class="info1">
+	            		<div class="ad1">
+	            			<h1><a href="#">丰台</a></h1>
+	            			<p>西四环边</p>
+	            		</div>
+	            		<div class="ad2">
+	            			<h1>改善之选</h1>
+	            			<p>科技大宅</p>
+	            		</div>
+	            	</div>
+	            </div>
+	            <div class="view1">
+	            	<a href="#"><img src="./images/view1.jpg" alt=""></a><img src="" alt="">
+	            	<div class="info1">
+	            		<div class="ad1">
+	            			<h1><a href="#">丰台</a></h1>
+	            			<p>西四环边</p>
+	            		</div>
+	            		<div class="ad2">
+	            			<h1>改善之选</h1>
+	            			<p>科技大宅</p>
+	            		</div>
+	            	</div>
+	            </div>
+	            <div class="view1">
+	            	<a href="#"><img src="./images/view1.jpg" alt=""></a><img src="" alt="">
+	            	<div class="info1">
+	            		<div class="ad1">
+	            			<h1><a href="#">丰台</a></h1>
+	            			<p>西四环边</p>
+	            		</div>
+	            		<div class="ad2">
+	            			<h1>改善之选</h1>
+	            			<p>科技大宅</p>
+	            		</div>
+	            	</div>
+	            </div>
+			</div>
+            <div class="rew2 hide"></div>
+            	
+            <div class="rew3 hide"></div>
+        </div>
+			
+			
+			
+		
+	</div>
+	<script>
+		$(function(){
+			var index = $(".roll li.selected").index();
+			// $(".right").click(function(){
+			// 	// console.log(index);
+			// 	if(index==2){ index=-1; }
+			// 	$(".roll li").eq(index+=1).addClass("selected").siblings().removeClass("selected");
+			// 	$(".top-img li").eq(index).fadeIn().siblings().fadeOut();
+			// })
+			function left(){
+				if(index==0){ index=3; }
+				$(".roll li").eq(index-=1).addClass("selected").siblings().removeClass("selected");
+				$(".top-img li").eq(index).fadeIn().siblings().fadeOut();
+			}
+			
+			// $(".left").click(function(){
+			// 	// console.log(index);
+			// 	if(index==0){ index=3; }
+			// 	$(".roll li").eq(index-=1).addClass("selected").siblings().removeClass("selected");
+			// 	$(".top-img li").eq(index).fadeIn().siblings().fadeOut();
+			// })
+			function right(){
+				if(index==2){ index=-1; }
+				$(".roll li").eq(index+=1).addClass("selected").siblings().removeClass("selected");
+				$(".top-img li").eq(index).fadeIn().siblings().fadeOut();
+			}
+			// $(".first li").click(function(){
+   //              $(this).addClass("selected").siblings().removeClass("selected");
+   //              var index = $(this).index();
+   //              $(".first").eq(index).show().siblings().hide();
+   //          })
+			$(".left").click(function(){
+				left()
+			})
+			$(".right").click(function(){
+				right()
+			})
+			function exportTimer(){
+				timer = setInterval(function(){
+					right();	
+				},2000);
+			}
+			exportTimer();
+
+			$(".left").hover(
+				function(){
+					clearInterval(timer)
+				},
+				function(){
+					exportTimer();
+				}
+			)
+			$(".right").hover(
+				function(){
+					clearInterval(timer)
+				},
+				function(){
+					exportTimer();
+				}				
+			)
+		});
+	</script>
+</body>
+</html>
